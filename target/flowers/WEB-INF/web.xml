@@ -49,22 +49,22 @@
     </auth-constraint>
   </security-constraint>
 
-  <!-- Validation By Form -->
-  <login-config>
-    <auth-method>FORM</auth-method>
-    <form-login-config>
-      <form-login-page>/pages/public/login.xhtml</form-login-page>
-      <form-error-page>/pages/public/loginError.xhtml</form-error-page>
-    </form-login-config>
-  </login-config>
+  <!--&lt;!&ndash; Validation By Form &ndash;&gt;-->
+  <!--<login-config>-->
+    <!--<auth-method>FORM</auth-method>-->
+    <!--<form-login-config>-->
+      <!--<form-login-page>/pages/public/login.xhtml</form-login-page>-->
+      <!--<form-error-page>/pages/public/loginError.xhtml</form-error-page>-->
+    <!--</form-login-config>-->
+  <!--</login-config>-->
 
-  <!-- Allowed Roles -->
-  <security-role>
-    <role-name>ADMIN</role-name>
-  </security-role>
-  <security-role>
-    <role-name>USER</role-name>
-  </security-role>
+  <!--&lt;!&ndash; Allowed Roles &ndash;&gt;-->
+  <!--<security-role>-->
+    <!--<role-name>ADMIN</role-name>-->
+  <!--</security-role>-->
+  <!--<security-role>-->
+    <!--<role-name>USER</role-name>-->
+  <!--</security-role>-->
 
   <!-- Filter to get the user name and work with it -->
   <!--<filter>-->
