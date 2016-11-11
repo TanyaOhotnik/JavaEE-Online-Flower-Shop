@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <div class="container main">
+        <div class="sort text-center">
+            <button type="button" class="btn btn-success">Сортировать</button>
+        </div>
+        <div class="container">
+            <!--<div class="blocks-in-row row">-->
+            <c:forEach begin="1" end="10">
+
+                <div class="col-lg-3 col-md-3 block">
+                    <img src="http://placehold.it/252x210"/>
+                    <div class="tspan">
+                        <h3 class="h4">Название цветка</h3>
+                        <p class="pull-left">some description</p>
+                    </div>
+                    <a href="#" class="btn btn-default pull-right" role="button">Button</a>
+                </div>
+            </c:forEach>
+
+
+            <!--</div>-->
+
+        </div>
+    </div>
+
+
+</ui:composition>

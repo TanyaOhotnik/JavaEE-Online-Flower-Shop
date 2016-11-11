@@ -2,18 +2,20 @@ package com.mkr.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.security.Principal;
 
 /**
  * Created by Tanya Ohotnik on 09.11.2016.
  */
 @Entity
 @Table(name = "role")
-public class Role implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Role implements Serializable {
+
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private int id;
 
+    @Id
     @Column(name = "name")
     private String name;
 

@@ -15,13 +15,13 @@ public class Bucket implements Serializable {
     @Column(name = "bucket_id")
     private int id;
 
-    @OneToOne(targetEntity = Profile.class)
+    @ManyToOne(targetEntity = Profile.class)
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    @OneToMany(targetEntity = Order.class)
+    @OneToOne(targetEntity = Order.class)
     @JoinColumn(name = "order_id", nullable = true)
-    private List<Order> orders;
+    private Order order;
 
     public int getId() {
         return id;
@@ -39,12 +39,12 @@ public class Bucket implements Serializable {
         this.profile = profile;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Bucket implements Serializable {
 
         if (id != bucket.id) return false;
         if (profile != null ? !profile.equals(bucket.profile) : bucket.profile != null) return false;
-        return orders != null ? orders.equals(bucket.orders) : bucket.orders == null;
+        return order != null ? order.equals(bucket.order) : bucket.order == null;
 
     }
 
@@ -64,7 +64,7 @@ public class Bucket implements Serializable {
     public int hashCode() {
         int result = id;
         result = 31 * result + (profile != null ? profile.hashCode() : 0);
-        result = 31 * result + (orders != null ? orders.hashCode() : 0);
+        result = 31 * result + (order != null ? order.hashCode() : 0);
         return result;
     }
 }

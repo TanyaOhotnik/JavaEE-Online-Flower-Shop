@@ -27,38 +27,45 @@
     <param-value>none</param-value>
   </context-param>
 
+  <!-- Servlet that displays latest uploaded file -->
 
-  <!-- Protected Areas -->
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>Only admins</web-resource-name>
-      <url-pattern>/pages/protected/admin/*</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>ADMIN</role-name>
-    </auth-constraint>
-  </security-constraint>
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>Users and admins</web-resource-name>
-      <url-pattern>/pages/protected/user/*</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>ADMIN</role-name>
-      <role-name>USER</role-name>
-    </auth-constraint>
-  </security-constraint>
 
-  <!--&lt;!&ndash; Validation By Form &ndash;&gt;-->
+
   <!--<login-config>-->
     <!--<auth-method>FORM</auth-method>-->
+    <!--<realm-name>JDBCRealm</realm-name>-->
     <!--<form-login-config>-->
-      <!--<form-login-page>/pages/public/login.xhtml</form-login-page>-->
-      <!--<form-error-page>/pages/public/loginError.xhtml</form-error-page>-->
+      <!--<form-login-page>/public/login.xhtml</form-login-page>-->
+      <!--<form-error-page>/public/loginError.xhtml</form-error-page>-->
     <!--</form-login-config>-->
   <!--</login-config>-->
 
-  <!--&lt;!&ndash; Allowed Roles &ndash;&gt;-->
+  <!--&lt;!&ndash; Protected Areas &ndash;&gt;-->
+  <!--<security-constraint>-->
+    <!--<web-resource-collection>-->
+      <!--<web-resource-name>Only admins</web-resource-name>-->
+      <!--<url-pattern>/protected/admin/*</url-pattern>-->
+    <!--</web-resource-collection>-->
+    <!--<auth-constraint>-->
+      <!--<role-name>role_admin</role-name>-->
+    <!--</auth-constraint>-->
+  <!--</security-constraint>-->
+  <!--<security-constraint>-->
+    <!--<web-resource-collection>-->
+      <!--<web-resource-name>Users and admins</web-resource-name>-->
+      <!--<url-pattern>/protected/user/*</url-pattern>-->
+    <!--</web-resource-collection>-->
+    <!--<auth-constraint>-->
+      <!--<role-name>role_admin</role-name>-->
+      <!--<role-name>role_user</role-name>-->
+    <!--</auth-constraint>-->
+  <!--</security-constraint>-->
+
+
+
+  <!--&lt;!&ndash; Validation By Form &ndash;&gt;-->
+
+  <!--&lt;!&ndash; Allowed roles &ndash;&gt;-->
   <!--<security-role>-->
     <!--<role-name>ADMIN</role-name>-->
   <!--</security-role>-->

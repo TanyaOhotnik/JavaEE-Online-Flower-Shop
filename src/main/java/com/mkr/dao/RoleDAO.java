@@ -1,6 +1,7 @@
 package com.mkr.dao;
 
 import com.mkr.dao.interfaces.IRoleDAO;
+import com.mkr.entities.Product;
 import com.mkr.entities.Role;
 
 import javax.ejb.Local;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Stateless
 @Local(IRoleDAO.class)
-public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO<Role>{
+public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO<Role> {
     @Override
     public List<Role> getAll() {
         String query = "SELECT c FROM Role c";
@@ -26,4 +27,10 @@ public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO<Role>{
         return Role.class;
     }
 
+    @Override
+    public Role findByRoleName(String name) {
+        String query = "SELECT c FROM Role c WHERE c.name LIKE :name";
+        TypedQuery<Role> namedQuery = em.createQuery(query, Role.class).setParameter("name",name);
+        return namedQuery.getSingleResult();
+    }
 }

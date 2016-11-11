@@ -7,5 +7,5 @@ import java.util.List;
  */
 
 public interface IRoleDAO<T> extends InterfaceDAO<T> {
-
+   public T findByRoleName(String name);
 }

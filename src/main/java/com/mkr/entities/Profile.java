@@ -2,6 +2,7 @@ package com.mkr.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Tanya Ohotnik on 09.11.2016.
@@ -17,6 +18,9 @@ public class Profile implements Serializable{
     @Column(name = "name")
     private String name;
 
+    @Column(name = "surname")
+    private String surname;
+
     @Column(name = "password")
     private String password;
 
@@ -24,10 +28,10 @@ public class Profile implements Serializable{
     private String email;
 
     @Column(name = "phone")
-    private long phone;
+    private String phone;
 
-    @ManyToOne(targetEntity = Role.class)
-    @JoinColumn(name = "role_id")
+    @ManyToOne(targetEntity = Role.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_name")
     private Role role;
 
     public int getId() {
@@ -68,6 +72,22 @@ public class Profile implements Serializable{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override

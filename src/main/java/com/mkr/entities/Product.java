@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "product")
-public class Product implements Serializable {
+public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -19,6 +19,9 @@ public class Product implements Serializable {
 
     @Column(name = "price")
     private int price;
+
+    @Column(name = "img")
+    private byte[] img;
 
     public int getId() {
         return id;
@@ -42,6 +45,14 @@ public class Product implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 
     @Override
