@@ -38,6 +38,5 @@ public class ProfileDAO extends AbstractDAO<Profile> implements IProfileDAO<Prof
         }catch (NoResultException ex){
             return null;
         }
-
     }
 }

@@ -1501,6 +1501,7 @@ blockquote .small:before {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
+  float: right;
   text-align: right;
   border-right: 5px solid #eee;
   border-left: 0;

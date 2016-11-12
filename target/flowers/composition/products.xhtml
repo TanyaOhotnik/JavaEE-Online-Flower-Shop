@@ -10,16 +10,23 @@
         </div>
         <div class="container">
             <!--<div class="blocks-in-row row">-->
-            <c:forEach begin="1" end="10">
-
+            <c:forEach items="#{getProductsManagedBean.getAll()}" var="product">
+            <!--<ui:repeat value="#{getProductsManagedBean.all}" var="product">-->
                 <div class="col-lg-3 col-md-3 block">
-                    <img src="http://placehold.it/252x210"/>
+                    <!--<img src="http://placehold.it/252x210"/>-->
+                    <h:graphicImage value="#{product.img}"/>
                     <div class="tspan">
-                        <h3 class="h4">Название цветка</h3>
-                        <p class="pull-left">some description</p>
+                        <!--<h3 class="h4">Название цветка</h3>-->
+                        <h:outputText styleClass="h4" value="#{product.name}"/>
+                        <br/>
+                        <!--<p class="pull-left">some description</p>-->
+                        <h:outputText styleClass="pull-left" value="Цена: #{product.price}грн."/>
                     </div>
-                    <a href="#" class="btn btn-default pull-right" role="button">Button</a>
+                    <h:commandButton styleClass="btn btn-default order" value="Добавить"/>
+                    <!--<a href="#" class="" role="button">Button</a>-->
+
                 </div>
+            <!--</ui:repeat>-->
             </c:forEach>
 
 

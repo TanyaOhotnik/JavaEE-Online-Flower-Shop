@@ -51,7 +51,7 @@
             <h:form styleClass="form-horizontal">
 
                     <legend class="h3">Регистрация</legend>
-
+                    <p>* - поля обязательные для заполнения</p>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Имя</label>
                     <div class="col-lg-5">
@@ -59,7 +59,7 @@
                         <h:inputText styleClass="form-control input-md" id="name"
                                      validator="#{addGetProfileManagedBean.validateNull}"
                                      ph:placeholder = "Иван" value="#{addGetProfileManagedBean.profile.name}"/>
-                        <h:message for="name"/>
+                        <h:message for="name" styleClass="message"/>
                     </div>
                 </div>
 
@@ -68,22 +68,22 @@
                         <div class="col-lg-5">
                             <!--<input type="text" placeholder="Охотник" class="form-control input-md"/>-->
                             <h:inputText styleClass="form-control input-md" id="surname"
-                                         validator="#{addGetProfileManagedBean.validateNull}" required="true"
+                                         validator="#{addGetProfileManagedBean.validateNull}"
                                          ph:placeholder = "Иванов" value="#{addGetProfileManagedBean.profile.surname}"/>
-                            <h:message for="surname"/>
+                            <h:message for="surname" styleClass="message"/>
                         </div>
 
                     </div>
 
 
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Email адрес</label>
+                    <label class="col-lg-3 control-label">E-mail адрес</label>
                     <div class="col-lg-5">
                         <!--<input type="email" class="form-control" placeholder="Enter e-mail"/>-->
                         <h:inputText  styleClass="form-control input-md" id="email"
                                       validator="#{addGetProfileManagedBean.validateEmail}"
                                       ph:placeholder = "E-mail" value="#{addGetProfileManagedBean.profile.email}"/>
-                        <h:message for="email"/>
+                        <h:message for="email" styleClass="message"/>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                         <h:inputText styleClass="form-control input-md" id="phone"
                                      validator="#{addGetProfileManagedBean.validatePhone}" required="true"
                                      ph:placeholder = "0123456789" value="#{addGetProfileManagedBean.profile.phone}"/>
-                        <h:message for="phone"/>
+                        <h:message for="phone" styleClass="message"/>
 
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <label class="col-lg-3 control-label">Пароль</label>
                     <div class="col-lg-5">
                         <!--<input type="password" class="form-control" placeholder="Password"/>-->
-                        <h:inputSecret styleClass="form-control input-md"  required="true"
+                        <h:inputSecret styleClass="form-control input-md" id="pass"
                                        ph:placeholder = "Password" value="#{addGetProfileManagedBean.password}"/>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
                     <div class="col-lg-5">
                         <!--<input type="password" class="form-control" placeholder="Password"/>-->
                         <h:inputSecret styleClass="form-control input-md"   id="confirm-pass"
-                                       validator="#{addGetProfileManagedBean.validatePassword}" required="true" ph:placeholder = "Confirm password" value="#{addGetProfileManagedBean.profile.password}"/>
-                        <h:message for="confirm-pass"/>
+                                       validator="#{addGetProfileManagedBean.validatePassword}" ph:placeholder = "Confirm password" value="#{addGetProfileManagedBean.profile.password}"/>
+                        <h:message for="confirm-pass" styleClass="message" />
                     </div>
                 </div>
                 <!--<button type="submit" class="btn btn-primary pull-right">Зарегестрироваться</button>-->

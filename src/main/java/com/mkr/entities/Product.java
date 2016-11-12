@@ -1,11 +1,13 @@
 package com.mkr.entities;
 
+import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Tanya Ohotnik on 09.11.2016.
  */
+@RequestScoped
 @Entity
 @Table(name = "product")
 public class Product implements Serializable{
@@ -20,8 +22,18 @@ public class Product implements Serializable{
     @Column(name = "price")
     private int price;
 
+    @Column(name = "vendor_code")
+    private int vendorCode;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "available")
+    private boolean available;
+
     @Column(name = "img")
-    private byte[] img;
+//    private byte[] img;
+    private String img;
 
     public int getId() {
         return id;
@@ -47,12 +59,48 @@ public class Product implements Serializable{
         this.price = price;
     }
 
-    public byte[] getImg() {
+//    public byte[] getImg() {
+//        return img;
+//    }
+//
+//    public void setImg(byte[] img) {
+//        this.img = img;
+//    }
+
+    public String getImg() {
         return img;
     }
 
-    public void setImg(byte[] img) {
+    public void setImg(String img) {
         this.img = img;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getVendorCode() {
+        return vendorCode;
+    }
+
+    public void setVendorCode(Integer vendorCode) {
+        this.vendorCode = vendorCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     @Override
@@ -64,7 +112,11 @@ public class Product implements Serializable{
 
         if (id != product.id) return false;
         if (price != product.price) return false;
-        return name != null ? name.equals(product.name) : product.name == null;
+        if (vendorCode != product.vendorCode) return false;
+        if (available != product.available) return false;
+        if (name != null ? !name.equals(product.name) : product.name != null) return false;
+        if (description != null ? !description.equals(product.description) : product.description != null) return false;
+        return img != null ? img.equals(product.img) : product.img == null;
 
     }
 
@@ -73,6 +125,10 @@ public class Product implements Serializable{
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + price;
+        result = 31 * result + vendorCode;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (available ? 1 : 0);
+        result = 31 * result + (img != null ? img.hashCode() : 0);
         return result;
     }
 }

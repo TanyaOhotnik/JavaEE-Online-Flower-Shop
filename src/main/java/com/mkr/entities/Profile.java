@@ -101,7 +101,6 @@ public class Profile implements Serializable{
         if (name != null ? !name.equals(profile.name) : profile.name != null) return false;
         if (password != null ? !password.equals(profile.password) : profile.password != null) return false;
         if (email != null ? !email.equals(profile.email) : profile.email != null) return false;
-        if (email != null ? !email.equals(profile.email) : profile.email != null) return false;
         return role != null ? role.equals(profile.role) : profile.role == null;
 
     }
@@ -111,7 +110,6 @@ public class Profile implements Serializable{
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;

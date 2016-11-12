@@ -63,8 +63,8 @@ public class AddGetProfileManagedBean {
     }
 
     public void addProfile() {
-//        profile.setRole(roleDAO.findByRoleName("user"));
-//        profileDAO.update(profile);
+        profile.setRole(roleDAO.findByRoleName("user"));
+        profileDAO.add(profile);
     }
 
     public Profile findProfile() {

@@ -17,7 +17,7 @@ public abstract class AbstractDAO<T> implements InterfaceDAO<T> {
     protected EntityManager em;
 
     @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+//    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void add(T obj) {
         em.persist(obj);
     }

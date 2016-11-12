@@ -5,6 +5,7 @@ import com.mkr.entities.Product;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -44,5 +45,14 @@ public class ProductDAO extends AbstractDAO<Product> implements IProductDAO<Prod
         TypedQuery<Product> namedQuery = em.createQuery(query, Product.class).setParameter("min",min).setParameter("max",max);
         return namedQuery.getResultList();
     }
-
+    @Override
+    public Product findByVendorCode(int code) {
+        try{
+            String query = "SELECT c FROM Product c WHERE c.vendorCode LIKE :code";
+            TypedQuery<Product> namedQuery = em.createQuery(query, Product.class).setParameter("code",code);
+            return namedQuery.getSingleResult();
+        }catch (NoResultException ex){
+            return null;
+        }
+    }
 }

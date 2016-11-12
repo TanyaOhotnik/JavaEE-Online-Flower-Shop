@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public interface IProductDAO<T> extends InterfaceDAO<T> {
+    public T findByVendorCode(int code);
     public List<T> getAllByAscending();
     public List<T> getAllByDescending();
     public List<T> getAllBetweenPrices(int min,int max);
