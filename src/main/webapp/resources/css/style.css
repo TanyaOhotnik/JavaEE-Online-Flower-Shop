@@ -107,13 +107,13 @@ body{}
 	margin:50px 0;
 }
 .block {
-	height: 300px;
+	height: 310px;
 	border: 1px solid darkgray;
 	margin-left: 75px;
 
 }
 .block img {
-	padding-top: 10px;
+	padding: 10px 0;
     /*width: 300px;*/
     height: 250px;
     display: block;
@@ -191,4 +191,24 @@ body{}
 }
 .reg form button {
 	margin-bottom: 10px;
+}
+.selectMenu{
+    width: 30%;
+    height: 34px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px;
+}
+.selectMenu:focus {
+    border-color: #2b542c;
+
+}
+.form-group{
+    text-align: center;
+    margin: 10px !important;
 }

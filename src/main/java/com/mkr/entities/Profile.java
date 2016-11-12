@@ -1,5 +1,6 @@
 package com.mkr.entities;
 
+import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 /**
  * Created by Tanya Ohotnik on 09.11.2016.
  */
+@RequestScoped
 @Entity
 @Table(name = "profile")
 public class Profile implements Serializable{
@@ -30,7 +32,7 @@ public class Profile implements Serializable{
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne(targetEntity = Role.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Role.class, cascade =CascadeType.MERGE)
     @JoinColumn(name = "role_name")
     private Role role;
 

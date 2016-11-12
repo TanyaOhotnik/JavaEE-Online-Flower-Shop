@@ -68,6 +68,8 @@ public class Order implements Serializable {
         this.address = address;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,5 +1,6 @@
 package com.mkr.entities;
 
+import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.security.Principal;
@@ -7,6 +8,7 @@ import java.security.Principal;
 /**
  * Created by Tanya Ohotnik on 09.11.2016.
  */
+@RequestScoped
 @Entity
 @Table(name = "role")
 public class Role implements Serializable {

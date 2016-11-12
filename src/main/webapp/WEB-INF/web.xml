@@ -16,7 +16,7 @@
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>public/index.xhtml</welcome-file>
   </welcome-file-list>
   <context-param>
     <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>

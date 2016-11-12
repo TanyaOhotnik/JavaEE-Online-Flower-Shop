@@ -1,38 +1,54 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 
     <div class="container main">
-        <div class="sort text-center">
-            <button type="button" class="btn btn-success">Сортировать</button>
-        </div>
-        <div class="container">
-            <!--<div class="blocks-in-row row">-->
-            <c:forEach items="#{getProductsManagedBean.getAll()}" var="product">
-            <!--<ui:repeat value="#{getProductsManagedBean.all}" var="product">-->
+
+
+        <h:panelGroup layout="block" styleClass="container" id="productList">
+            <h:form styleClass="form-group">
+            <h:selectOneMenu styleClass="selectMenu"
+                    value="#{getProductsManagedBean.sort}">
+
+                Сортировать:
+                <f:selectItem id="none" itemValue="0"
+                              itemLabel="no-filter">
+                </f:selectItem>
+                <f:selectItem id="asc" itemValue="1"
+                              itemLabel="по возрастанию цены">
+                </f:selectItem>
+                <f:selectItem id="desc" itemValue="2"
+                              itemLabel="по убыванию цены">
+                </f:selectItem>
+
+            </h:selectOneMenu>
+            <h:commandButton styleClass="btn btn-default" id="ajax" value="Искать"  >
+                <f:ajax execute="@all" render=":productList"/>
+            </h:commandButton>
+        </h:form>
+            <c:forEach items="#{getProductsManagedBean.getProducts()}" var="product">
                 <div class="col-lg-3 col-md-3 block">
-                    <!--<img src="http://placehold.it/252x210"/>-->
                     <h:graphicImage value="#{product.img}"/>
                     <div class="tspan">
-                        <!--<h3 class="h4">Название цветка</h3>-->
                         <h:outputText styleClass="h4" value="#{product.name}"/>
                         <br/>
-                        <!--<p class="pull-left">some description</p>-->
                         <h:outputText styleClass="pull-left" value="Цена: #{product.price}грн."/>
                     </div>
-                    <h:commandButton styleClass="btn btn-default order" value="Добавить"/>
-                    <!--<a href="#" class="" role="button">Button</a>-->
-
+                    <h:form styleClass="order">
+                    <h:commandButton styleClass="btn btn-default " value="Добавить"
+                                     onclick="alert('Товар добавлен в корзину!')"
+                                     action="#{addDeleteOrderManagedBean.addOrder(product.id)}"
+                    /></h:form>
                 </div>
-            <!--</ui:repeat>-->
+
             </c:forEach>
 
 
-            <!--</div>-->
 
-        </div>
+        </h:panelGroup>
     </div>
 
 

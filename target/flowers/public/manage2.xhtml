@@ -7,7 +7,7 @@
       xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-  
+    <ui:include src="../composition/css.xhtml"/>
 </h:head>
 
 <h:body>
@@ -80,6 +80,8 @@
                                      ph:placeholder="name.jpeg" value="#{addDeleteProductManagedBean.product.img}"/>
                     </div>
                 </div>
+                <h:commandButton styleClass="btn btn-primary text-center" value="Удалить"
+                action="#{addDeleteProductManagedBean.addProduct()}"/>
 
             </h:form>
 

@@ -6,6 +6,7 @@ import com.mkr.entities.Role;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -29,8 +30,12 @@ public class RoleDAO extends AbstractDAO<Role> implements IRoleDAO<Role> {
 
     @Override
     public Role findByRoleName(String name) {
+        try{
         String query = "SELECT c FROM Role c WHERE c.name LIKE :name";
         TypedQuery<Role> namedQuery = em.createQuery(query, Role.class).setParameter("name",name);
         return namedQuery.getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
     }
 }

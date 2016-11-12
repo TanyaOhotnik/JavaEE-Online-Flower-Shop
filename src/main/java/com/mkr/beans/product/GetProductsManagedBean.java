@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import java.util.List;
 import java.util.Map;
 
@@ -22,20 +23,21 @@ public class GetProductsManagedBean {
     private IProductDAO<Product> productDAO;
     private Product product;
     private int productId;
+    private int sort;
     @PostConstruct
     public void init() {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         if(params != null && params.containsKey("product_id")) {
-            int productId = Integer.parseInt(params.get("product_id"));
+            productId = Integer.parseInt(params.get("product_id"));
             product = productDAO.find(productId);
         } else {
             product = new Product();
         }
     }
     public List<Product> getProducts(){
-        if(productId==0) return getAll();
-        if(productId==1) return getAllByAscending();
-        if(productId==2) return getAllByDescending();
+        if(sort==0) return getAll();
+        if(sort==1) return getAllByAscending();
+        if(sort==2) return getAllByDescending();
         return getAllBetweenPrices(1,1);
     }
 
@@ -69,5 +71,13 @@ public class GetProductsManagedBean {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
     }
 }

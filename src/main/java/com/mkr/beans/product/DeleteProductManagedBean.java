@@ -2,7 +2,6 @@ package com.mkr.beans.product;
 
 import com.mkr.dao.interfaces.IProductDAO;
 import com.mkr.entities.Product;
-import org.primefaces.model.UploadedFile;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,9 +14,9 @@ import javax.faces.context.FacesContext;
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
  */
-@ManagedBean(name = "addDeleteProductManagedBean", eager = true)
+@ManagedBean(name = "deleteProductManagedBean", eager = true)
 @RequestScoped
-public class AddDeleteProductManagedBean {
+public class DeleteProductManagedBean {
     @EJB
     private IProductDAO<Product> productDAO;
     private Product product;
@@ -43,37 +42,23 @@ public class AddDeleteProductManagedBean {
     public void setVendorCode(int vendorCode) {
         this.vendorCode = vendorCode;
     }
+    @Remove
     public void deleteProduct() {
-        FacesContext.getCurrentInstance().addMessage("test1",
-                new FacesMessage("hello!"));
+
         try{
             if(vendorCode==0) throw new Exception("no vendor code");
-            productDAO.delete(findByCode().getId());
+            productDAO.delete(findByCode());
             FacesContext.getCurrentInstance().addMessage("test1",
                     new FacesMessage("Товар удален из базы!"));
+
         } catch (Exception e){
 
             FacesContext.getCurrentInstance().addMessage("test1",
-                    new FacesMessage( e.getMessage()));
+                    new FacesMessage( "Произошла ошибка, товар не будет удален из базы!"));
         }
 
     }
-    @Remove
-    public void addProduct() {
-//        byte[] contents = file.getContents();
-//        product.setImg(contents);
-        try{
-           if(!validate()) throw new Exception();
-            product.setImg("../resources/images/"+product.getImg());
-            productDAO.add(product);
-            FacesContext.getCurrentInstance().addMessage("test",
-                    new FacesMessage("Товар добавлен в базу!"));
-            product = new Product();
-        } catch (Exception e){
-            FacesContext.getCurrentInstance().addMessage("test",
-                    new FacesMessage("Произошла ошибка, товар не добавлен в базу!"));
-        }
-    }
+
 
     public Product findByCode() {
         if(this.vendorCode >0){

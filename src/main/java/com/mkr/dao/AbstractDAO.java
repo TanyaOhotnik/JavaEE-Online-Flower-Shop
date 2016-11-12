@@ -30,7 +30,7 @@ public abstract class AbstractDAO<T> implements InterfaceDAO<T> {
     @Override
 //    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void delete(T obj) {
-        em.remove(obj);
+        em.remove(em.merge(obj));
     }
 
     @Override

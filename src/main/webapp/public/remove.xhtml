@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="../composition/css.xhtml"/>
+
+</h:head>
+
+<h:body>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/headerAdmin.xhtml"/>
+
+
+
+        <div class="container">
+            <h:form styleClass="form-horizontal">
+                <h:messages styleClass="message"/>
+                <legend class="h3">Удаление товара</legend>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Артикул товара</label>
+                    <div class="col-lg-5">
+                        <h:inputText styleClass="form-control input-md" id="findCode"
+                                     ph:placeholder="12345" value="#{deleteProductManagedBean.vendorCode}"/>
+                    </div>
+                </div>
+
+                <h:commandButton styleClass="btn btn-primary text-center" value="Искать"
+                                 action="#{deleteProductManagedBean.deleteProduct()}"/>
+                <h:panelGroup rendered="#{deleteProductManagedBean.vendorCode>0}">
+                    <h:outputText size="5" value="Aртикул: "/>
+                    <h:outputText value="#{deleteProductManagedBean.product.vendorCode}" readonly="true"/><br/>
+                    <h:outputText value="Название: "/>
+                    <h:outputText value="#{deleteProductManagedBean.product.name}"/><br/>
+                    <h:outputText value="Цена: "/>
+                    <h:outputText value="#{deleteProductManagedBean.product.price}"/><br/>
+
+                    <h:commandButton styleClass="btn btn-primary text-center" value="Удалить"
+                                     action="#{deleteProductManagedBean.deleteProduct()}"/>
+
+                </h:panelGroup>
+            </h:form>
+
+
+        </div>
+
+    </div>
+    <ui:include src="../composition/footer.xhtml"/>
+    <!--<ui:include src="../composition/script.xhtml"/>-->
+
+</h:body>
+
+</html>

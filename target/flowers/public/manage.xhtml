@@ -21,7 +21,7 @@
 
         <div class="container">
             <h:form styleClass="form-horizontal">
-                <!--<h:messages styleClass="message"/>-->
+                <h:messages styleClass="message"/>
                 <legend class="h3">Добавление товара</legend>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Название</label>
@@ -81,9 +81,9 @@
                                      ph:placeholder="name.jpeg" value="#{addDeleteProductManagedBean.product.img}"/>
                     </div>
                 </div>
-                <!--<h:commandButton styleClass="btn btn-primary pull-right" value="Добавить" action="manage?faces-redirect=true" actionListener="#{addDeleteProductManagedBean.addProduct()}"/>-->
-                <!--<h:commandButton styleClass="btn btn-primary text-center" value="Добавить"-->
-                <!--actionListener="#{addDeleteProductManagedBean.addProduct()}"/>-->
+                <!--<h:commandButton styleClass="btn btn-primary pull-right" value="Добавить" action="manage?faces-redirect=true"/>-->
+                <h:commandButton styleClass="btn btn-primary text-center" value="Добавить"
+                action="#{addDeleteProductManagedBean.addProduct()}"/>
 
             </h:form>
 
@@ -92,7 +92,7 @@
 
         <div class="container">
             <h:form styleClass="form-horizontal">
-
+                <h:messages styleClass="message"/>
                 <legend class="h3">Удаление товара</legend>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Артикул товара</label>
@@ -102,19 +102,18 @@
                     </div>
                 </div>
 
-                <!--<h:commandButton styleClass="btn btn-primary pull-right" value="Добавить" action="manage?faces-redirect=true" actionListener="#{addDeleteProductManagedBean.addProduct()}"/>-->
-                <!--<h:commandButton styleClass="btn btn-primary text-center" value="Искать"-->
-                                 <!--actionListener="#{addDeleteProductManagedBean.findByCode()}"/>-->
+               <h:commandButton styleClass="btn btn-primary text-center" value="Искать"
+                                 action="#{addDeleteProductManagedBean.findByCode()}"/>
                 <h:panelGroup rendered="#{addDeleteProductManagedBean.vendorCode>0}">
                     <h:outputText size="5" value="Aртикул: "/>
-                    <h:outputText value="#{addDeleteProductManagedBean.product.vendorCode}" readonly="true"/><br/>
+                    <h:outputText value="#{addDeleteProductManagedBean.product.vendorCode}"/><br/>
                     <h:outputText value="Название: "/>
                     <h:outputText value="#{addDeleteProductManagedBean.product.name}"/><br/>
                     <h:outputText value="Цена: "/>
                     <h:outputText value="#{addDeleteProductManagedBean.product.price}"/><br/>
 
-                    <!--<h:commandButton styleClass="btn btn-primary text-center" value="Удалить"-->
-                                     <!--actionListener="#{addDeleteProductManagedBean.delete()}"/>-->
+                    <h:commandButton styleClass="btn btn-primary text-center" value="Удалить"
+                                     action="#{addDeleteProductManagedBean.deleteProduct()}"/>
 
                 </h:panelGroup>
             </h:form>

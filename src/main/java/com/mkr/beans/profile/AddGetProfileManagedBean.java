@@ -3,6 +3,7 @@ package com.mkr.beans.profile;
 import com.mkr.dao.RoleDAO;
 import com.mkr.dao.interfaces.IProfileDAO;
 import com.mkr.dao.interfaces.IRoleDAO;
+import com.mkr.entities.Product;
 import com.mkr.entities.Profile;
 import com.mkr.entities.Role;
 
@@ -18,7 +19,7 @@ import javax.faces.context.FacesContext;
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
  */
-@ManagedBean(name = "addGetProfileManagedBean")
+@ManagedBean(name = "addGetProfileManagedBean", eager = true)
 @RequestScoped
 public class AddGetProfileManagedBean {
     @EJB
@@ -63,8 +64,20 @@ public class AddGetProfileManagedBean {
     }
 
     public void addProfile() {
-        profile.setRole(roleDAO.findByRoleName("user"));
-        profileDAO.add(profile);
+
+
+        try{
+//            product.setImg("../resources/images/"+product.getImg());
+            profile.setRole(roleDAO.findByRoleName("user"));
+            profileDAO.update(profile);
+            FacesContext.getCurrentInstance().addMessage("test",
+                    new FacesMessage("Поздравляем, вы зарегестрированы!"));
+            profile = new Profile();
+        } catch (Exception e){
+            FacesContext.getCurrentInstance().addMessage("test",
+                    new FacesMessage("Произошла ошибка, проверьте форму регистрации!"));
+        }
+
     }
 
     public Profile findProfile() {
