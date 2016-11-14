@@ -75,7 +75,7 @@ public class AddGetProfileManagedBean {
             profile = new Profile();
         } catch (Exception e){
             FacesContext.getCurrentInstance().addMessage("test",
-                    new FacesMessage("Произошла ошибка, проверьте форму регистрации!"));
+                    new FacesMessage("Произошла ошибка, существует аккаунт с указанным e-mail!"));
         }
 
     }

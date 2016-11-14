@@ -1,4 +1,6 @@
-body{}
+body{
+    min-width: 700px;
+}
 .vertical-align {
     display: flex;
     align-items: center;
@@ -109,7 +111,7 @@ body{}
 .block {
 	height: 310px;
 	border: 1px solid darkgray;
-	margin-left: 75px;
+	margin: 0 0 20px 75px;
 
 }
 .block img {
@@ -211,4 +213,21 @@ body{}
 .form-group{
     text-align: center;
     margin: 10px !important;
+}
+.wrapper{
+	min-height: 500px;
+}
+input.btn.btn-primary.text-center{
+	margin-left: 305px;
+}
+#registration label::after{
+	content: "* ";
+	color: red;
+}
+.result-validate{
+	color:red;
+}
+.delProduct{
+	padding: 20px 305px;
+	line-height: 20px;
 }

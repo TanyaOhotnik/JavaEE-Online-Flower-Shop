@@ -113,8 +113,8 @@
                     <h:outputText value="#{addDeleteProductManagedBean.product.price}"/><br/>
 
                     <h:commandButton styleClass="btn btn-primary text-center" value="Удалить"
-                                     action="#{addDeleteProductManagedBean.deleteProduct()}"/>
-
+                                     action="#{addDeleteProductManagedBean.deleteProduct()}">
+                    <f:ajax execute="delProduct" render="delProduct"/></h:commandButton>
                 </h:panelGroup>
             </h:form>
 

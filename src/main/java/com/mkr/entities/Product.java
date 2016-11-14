@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by Tanya Ohotnik on 09.11.2016.
  */
-@RequestScoped
+
 @Entity
 @Table(name = "product")
 public class Product implements Serializable{

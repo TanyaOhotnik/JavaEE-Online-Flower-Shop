@@ -13,45 +13,51 @@
 
 <h:body>
 
-    <div class="container wrapper">
+    <h:panelGroup layout="block" styleClass="container wrapper">
 
 
         <ui:include src="../composition/headerAdmin.xhtml"/>
 
 
 
-        <div class="container">
+        <h:panelGroup layout="block" styleClass="container">
             <h:form styleClass="form-horizontal">
                 <h:messages styleClass="message"/>
                 <legend class="h3">Удаление товара</legend>
+                <p align="center">Введите артиул товара, который необходимо удалить.</p>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Артикул товара</label>
+                    <label class="col-lg-3 control-label">Артикул: </label>
                     <div class="col-lg-5">
                         <h:inputText styleClass="form-control input-md" id="findCode"
-                                     ph:placeholder="12345" value="#{deleteProductManagedBean.vendorCode}"/>
+                                     ph:placeholder="12345" value="#{deleteProductManagedBean.vendorCode>0 ? deleteProductManagedBean.vendorCode :''}"/>
                     </div>
                 </div>
 
-                <h:commandButton styleClass="btn btn-primary text-center" value="Искать"
-                                 action="#{deleteProductManagedBean.deleteProduct()}"/>
-                <h:panelGroup rendered="#{deleteProductManagedBean.vendorCode>0}">
+                <h:commandButton styleClass="btn btn-primary" value="Искать"
+                                 action="#{deleteProductManagedBean.findByCode()}">
+                </h:commandButton>
+                <br/>
+
+                <h:panelGroup layout="block" id = "delProduct" style="text-align: center" styleClass="delProduct" rendered="#{deleteProductManagedBean.product.vendorCode>0}">
+                    <h:outputText style="padding-left: -305px" value="Pезультаты поиска: "/>
                     <h:outputText size="5" value="Aртикул: "/>
-                    <h:outputText value="#{deleteProductManagedBean.product.vendorCode}" readonly="true"/><br/>
+                    <h:outputText value="#{deleteProductManagedBean.product.vendorCode}"/><br/>
                     <h:outputText value="Название: "/>
                     <h:outputText value="#{deleteProductManagedBean.product.name}"/><br/>
                     <h:outputText value="Цена: "/>
                     <h:outputText value="#{deleteProductManagedBean.product.price}"/><br/>
-
                     <h:commandButton styleClass="btn btn-primary text-center" value="Удалить"
-                                     action="#{deleteProductManagedBean.deleteProduct()}"/>
+                    action="#{deleteProductManagedBean.deleteProduct()}"/>
+
+
 
                 </h:panelGroup>
             </h:form>
 
 
-        </div>
+        </h:panelGroup>
 
-    </div>
+    </h:panelGroup>
     <ui:include src="../composition/footer.xhtml"/>
     <!--<ui:include src="../composition/script.xhtml"/>-->
 

@@ -9,13 +9,14 @@ import javax.ejb.Remove;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
  */
 @ManagedBean(name = "deleteProductManagedBean", eager = true)
-@RequestScoped
+@SessionScoped
 public class DeleteProductManagedBean {
     @EJB
     private IProductDAO<Product> productDAO;
@@ -42,12 +43,14 @@ public class DeleteProductManagedBean {
     public void setVendorCode(int vendorCode) {
         this.vendorCode = vendorCode;
     }
-    @Remove
+
     public void deleteProduct() {
 
         try{
-            if(vendorCode==0) throw new Exception("no vendor code");
+
             productDAO.delete(findByCode());
+            vendorCode = 0;
+            product = new Product();
             FacesContext.getCurrentInstance().addMessage("test1",
                     new FacesMessage("Товар удален из базы!"));
 
@@ -63,6 +66,10 @@ public class DeleteProductManagedBean {
     public Product findByCode() {
         if(this.vendorCode >0){
                 product =  productDAO.findByVendorCode(this.vendorCode);
+             if(product==null) {
+                FacesContext.getCurrentInstance().addMessage("test1",
+                        new FacesMessage("Товар не найден, проверьте артикул."));
+            }
     }
         return product;
     }
