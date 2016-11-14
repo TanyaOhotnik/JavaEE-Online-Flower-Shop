@@ -48,7 +48,7 @@ body{
 	/*width: 100%;*/
 	/*!*border: 1px solid black;*!*/
 	/*height: inherit;*/
-	margin-left: 70px;
+	margin-left: 60px;
 }
 .nav ul {
 	/*width: 100%;*/
@@ -181,14 +181,16 @@ body{
 }
 
 
-.reg {
+.reg,.editProfile {
 	width: 60%;
 	margin-top: 4%;
 	margin-bottom: 4%;
-	display: none;
 	border: 3px solid #78BF09;
 }
-.reg, .sign-up form {
+.reg{
+	display: none;
+}
+.reg, .sign-up form, .editProfile {
 	padding: 25px;
 }
 .reg form button {

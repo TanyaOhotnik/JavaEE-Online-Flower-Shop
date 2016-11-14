@@ -29,11 +29,11 @@
                     <label class="col-lg-3 control-label">Артикул: </label>
                     <div class="col-lg-5">
                         <h:inputText styleClass="form-control input-md" id="findCode"
-                                     ph:placeholder="12345" value="#{deleteProductManagedBean.vendorCode>0 ? deleteProductManagedBean.vendorCode :''}"/>
+                                     ph:placeholder="12345" value="#{deleteProductManagedBean.vendorCode}"/>
                     </div>
                 </div>
 
-                <h:commandButton styleClass="btn btn-primary" value="Искать"
+                <h:commandButton styleClass="btn btn-primary text-center" value="Искать"
                                  action="#{deleteProductManagedBean.findByCode()}">
                 </h:commandButton>
                 <br/>

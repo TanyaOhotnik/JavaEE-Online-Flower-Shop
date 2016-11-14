@@ -273,7 +273,7 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-
+  margin-left: 5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
