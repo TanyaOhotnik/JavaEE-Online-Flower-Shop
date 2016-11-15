@@ -181,16 +181,19 @@ body{
 }
 
 
-.reg,.editProfile {
+.reg,.editProfile,.add {
 	width: 60%;
 	margin-top: 4%;
 	margin-bottom: 4%;
 	border: 3px solid #78BF09;
+	border-radius: 7px;
+	min-height: 500px;
+
 }
 .reg{
 	display: none;
 }
-.reg, .sign-up form, .editProfile {
+.reg, .sign-up form, .editProfile,.add {
 	padding: 25px;
 }
 .reg form button {
@@ -231,5 +234,12 @@ input.btn.btn-primary.text-center{
 }
 .delProduct{
 	padding: 20px 305px;
-	line-height: 20px;
+	line-height: 1.5;
+}
+.delProduct input{
+	margin: 10px 0;
+}
+.container .basket{
+	width: 400px !important;
+	margin: 20px auto !important;
 }

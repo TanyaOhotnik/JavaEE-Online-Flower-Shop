@@ -17,53 +17,53 @@
 
         <ui:include src="../composition/header.xhtml"/>
 
+        <div style="width: 70%; margin:0 auto;">
+            <h:dataTable styleClass="table" id="docList" value="#{getOrdersManagedBean.getAll()}" var="row">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID"/>
+                    </f:facet>
+                    <h:outputText value="#{row.id}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Date"/>
+                    </f:facet>
+                    <h:outputText value="#{row.date}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Delivery address"/>
+                    </f:facet>
+                    <h:outputText value="#{row.address}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Customer name"/>
+                    </f:facet>
+                    <h:outputText value="#{row.profile.name} #{row.profile.surname}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Customer phone"/>
+                    </f:facet>
+                    <h:outputText value="#{row.profile.phone}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Vendor code"/>
+                    </f:facet>
+                    <h:outputText value="#{row.product.vendorCode}">
+                    </h:outputText>
+                </h:column>
 
-        <h:dataTable  id = "docList" value="#{getOrdersManagedBean.getAll()}" var="row">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="ID"/>
-                </f:facet>
-                <h:outputText value="#{row.id}">
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Date"/>
-                </f:facet>
-                <h:outputText value="#{row.date}">
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Delivery address"/>
-                </f:facet>
-                <h:outputText value="#{row.address}">
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Customer name"/>
-                </f:facet>
-                <h:outputText value="#{row.profile.name} #{row.profile.surname}">
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Customer phone"/>
-                </f:facet>
-                <h:outputText value="#{row.profile.phone}">
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Vendor code"/>
-                </f:facet>
-                <h:outputText value="#{row.product.vendorCode}">
-                </h:outputText>
-            </h:column>
-
-        </h:dataTable>
-
+            </h:dataTable>
+        </div>
 
         <ui:include src="../composition/footer.xhtml"/>
 

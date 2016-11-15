@@ -38,7 +38,7 @@
                 </h:commandButton>
                 <br/>
 
-                <h:panelGroup layout="block" id = "delProduct" style="text-align: center" styleClass="delProduct" rendered="#{deleteProductManagedBean.product.vendorCode>0}">
+                <h:panelGroup layout="block" id = "delProduct" styleClass="delProduct" rendered="#{deleteProductManagedBean.product.vendorCode>0}">
                     <h:outputText style="padding-left: -305px" value="Pезультаты поиска: "/>
                     <h:outputText size="5" value="Aртикул: "/>
                     <h:outputText value="#{deleteProductManagedBean.product.vendorCode}"/><br/>
@@ -46,7 +46,7 @@
                     <h:outputText value="#{deleteProductManagedBean.product.name}"/><br/>
                     <h:outputText value="Цена: "/>
                     <h:outputText value="#{deleteProductManagedBean.product.price}"/><br/>
-                    <h:commandButton styleClass="btn btn-primary text-center" value="Удалить"
+                    <h:commandButton styleClass="btn btn-primary" value="Удалить"
                     action="#{deleteProductManagedBean.deleteProduct()}"/>
 
 

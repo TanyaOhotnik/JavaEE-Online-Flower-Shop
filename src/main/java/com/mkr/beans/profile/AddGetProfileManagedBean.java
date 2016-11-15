@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -20,7 +21,7 @@ import javax.faces.context.FacesContext;
  * Created by Tanya Ohotnik on 10.11.2016.
  */
 @ManagedBean(name = "addGetProfileManagedBean", eager = true)
-@RequestScoped
+@SessionScoped
 public class AddGetProfileManagedBean {
     @EJB
     private IProfileDAO<Profile> profileDAO;

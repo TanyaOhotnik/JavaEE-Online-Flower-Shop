@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="../composition/css.xhtml"/>
+
+</h:head>
+
+<h:body>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/headerUser.xhtml"/>
+
+        <h:panelGroup layout="block" styleClass="container add">
+            <h:panelGroup layout="block" style="margin-left: 194px;" styleClass="h3 col-lg-6 control-label text-center"
+                         rendered="#{addDeleteOrderManagedBean.summary == 0}">
+                <h:outputText  value="В вашей карзине еще нет товаров, посетите каталог чтобы исправить это:) "/>
+                </h:panelGroup>
+
+            <h:dataTable  styleClass="basket table"
+                         rendered="#{addDeleteOrderManagedBean.summary > 0}"
+                         id="ordersList" value="#{addDeleteOrderManagedBean.getOrderList()}"
+                         var="row">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Название товара"/>
+                    </f:facet>
+                    <h:outputText value="#{row.product.name}">
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Цена"/>
+                    </f:facet>
+                    <h:outputText value="#{row.product.price}">
+                    </h:outputText>
+                </h:column>
+               
+
+            </h:dataTable>
+            <h:panelGroup layout="block" styleClass="form-group" rendered="#{addDeleteOrderManagedBean.summary > 0}">
+                <h:outputText value="Итого: #{addDeleteOrderManagedBean.summary} грн."/>
+            </h:panelGroup>
+
+
+            <h:form styleClass="form-horizontal" id="addInfo" rendered="#{addDeleteOrderManagedBean.summary > 0}">
+
+                <h:panelGroup layout="block" id="address" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Адрес доставки: </label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Татьяна" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="ул. Тараса Шевченко 25"
+                                     value="#{addDeleteOrderManagedBean.order.address}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" id="date" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Дата доставки: </label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Татьяна" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="13.09.2016" value="#{addDeleteOrderManagedBean.order.date}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+                <h:commandButton id="makeOrder" styleClass="btn btn-primary " value="Подтвердить заказ"
+                                 action="#{addDeleteOrderManagedBean.saveChanges()}"/>
+
+            </h:form>
+        </h:panelGroup>
+        <ui:include src="../composition/footer.xhtml"/>
+
+
+    </div>
+    <ui:include src="../composition/script.xhtml"/>
+    <script type="text/javascript" src="../resources/js/validateOrder.js"></script>
+
+</h:body>
+
+</html>
