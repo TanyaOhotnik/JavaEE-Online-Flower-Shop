@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    JSF 2 Login
+</h:head>
+<h:body>
+    <p>Login to access secure pages:</p>
+    <h:form>
+
+        <h:outputLabel value="Email" />
+        <h:inputText id="username" value="#{loginManageBean.username}" size="50" />
+        <h:outputLabel value="Password" />
+        <h:inputSecret id="password" value="#{loginManageBean.password}" size="50" />
+
+        <h:commandButton action="#{loginManageBean.login()}" value="Войти" />
+    </h:form>
+
+
+</h:body>
+</html>

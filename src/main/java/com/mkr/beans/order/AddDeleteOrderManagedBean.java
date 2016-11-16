@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
  */
+
 @ManagedBean(name = "addDeleteOrderManagedBean", eager = true)
 @SessionScoped
 public class AddDeleteOrderManagedBean {

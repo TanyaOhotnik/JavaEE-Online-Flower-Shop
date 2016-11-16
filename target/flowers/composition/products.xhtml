@@ -38,10 +38,15 @@
                         <h:outputText styleClass="pull-left" value="Цена: #{product.price}грн."/>
                     </div>
                     <h:form styleClass="order">
+                        <h:commandButton styleClass="btn btn-default " value="Добавить"
+                                         onclick="alert('Чтобы добавить товар в корзину - авторизуйтесь.')"
+                                         rendered="#{not loginManageBean.isLogged()}"
+                                        />
                     <h:commandButton styleClass="btn btn-default " value="Добавить"
+                                     rendered="#{loginManageBean.isLogged()}"
                                      onclick="alert('Товар добавлен в корзину!')"
-                                     action="#{addDeleteOrderManagedBean.addOrder(product.id)}"
-                    /></h:form>
+                                     action="#{addDeleteOrderManagedBean.addOrder(product.id)}"/>
+                    </h:form>
                 </div>
 
             </c:forEach>
