@@ -28,6 +28,12 @@ public class Order implements Serializable {
     @Column(name = "delivery_address")
     private String address;
 
+    @Column(name = "addressee_name")
+    private String addresseeName;
+
+    @Column(name = "is_done")
+    private boolean done;
+
     public int getId() {
         return id;
     }
@@ -68,7 +74,21 @@ public class Order implements Serializable {
         this.address = address;
     }
 
+    public String getAddresseeName() {
+        return addresseeName;
+    }
 
+    public void setAddresseeName(String addressee_name) {
+        this.addresseeName = addressee_name;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,10 +98,12 @@ public class Order implements Serializable {
         Order order = (Order) o;
 
         if (id != order.id) return false;
+        if (done != order.done) return false;
         if (profile != null ? !profile.equals(order.profile) : order.profile != null) return false;
         if (product != null ? !product.equals(order.product) : order.product != null) return false;
         if (date != null ? !date.equals(order.date) : order.date != null) return false;
-        return address != null ? address.equals(order.address) : order.address == null;
+        if (address != null ? !address.equals(order.address) : order.address != null) return false;
+        return addresseeName != null ? addresseeName.equals(order.addresseeName) : order.addresseeName == null;
 
     }
 
@@ -92,6 +114,8 @@ public class Order implements Serializable {
         result = 31 * result + (product != null ? product.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (addresseeName != null ? addresseeName.hashCode() : 0);
+        result = 31 * result + (done ? 1 : 0);
         return result;
     }
 }

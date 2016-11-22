@@ -10,7 +10,8 @@
 
 <ui:composition
         xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
     <div class="header container ">
@@ -27,7 +28,8 @@
                     <li><a href="index.xhtml">Каталог</a></li>
 
                     <li><a href="manage.xhtml">Управление</a></li>
-                    <li><a href="orderList.xhtml">Заказы</a></li>
+                    <li><a href="orders.xhtml">Заказы</a></li>
+                    <li><a href="archive.xhtml">Архив</a></li>
                     <!-- <li><a href="#">Ссылка 3</a></li>
                     <li><a href="#">Ссылка 4</a></li>
                     <li><a href="#">Ссылка 5</a></li> -->
@@ -35,7 +37,12 @@
             </div>
             <!--<a href="registration.xhtml"><span class="glyphicon glyphicon-user"/>Личный кабинет</a>-->
             <span class="col-lg-2 col-md-3 col-md-offset-0 col-lg-offset-0 sign-cart vertical-align pull-right">
-                <a href="" ><span class="glyphicon glyphicon-log-out"/> Выход</a>
+                <h:form>
+                <h:commandLink action="#{loginManageBean.logout()}">
+                    <span class="glyphicon glyphicon-log-out"/>
+                    Выход
+                </h:commandLink>
+                </h:form>
             </span>
 
 

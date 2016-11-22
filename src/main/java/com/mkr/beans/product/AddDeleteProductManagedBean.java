@@ -63,7 +63,11 @@ public class AddDeleteProductManagedBean {
 //        byte[] contents = file.getContents();
 //        product.setImg(contents);
         try{
-           if(!validate()) throw new Exception();
+           if(productDAO.findByVendorCode(product.getVendorCode())!=null) {
+               FacesContext.getCurrentInstance().addMessage("test",
+                       new FacesMessage("Товар c таким артикулом уже существует!"));
+               return;
+           }
             product.setImg("../resources/images/"+product.getImg());
             productDAO.add(product);
             FacesContext.getCurrentInstance().addMessage("test",
@@ -81,15 +85,7 @@ public class AddDeleteProductManagedBean {
     }
         return product;
     }
-    public boolean validate(){
-        if(product.getName()==null || product.getImg() ==null
-                || product.getPrice()==0 || product.getDescription()==null){
-            return false;
-        }
-        if(Integer.toString(product.getVendorCode()).length()!=5) return false;
-        return true;
 
-    }
 //    public UploadedFile getFile() {
 //        return file;
 //    }

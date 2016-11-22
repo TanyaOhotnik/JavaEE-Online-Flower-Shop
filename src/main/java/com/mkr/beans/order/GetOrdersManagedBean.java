@@ -36,6 +36,17 @@ public class GetOrdersManagedBean {
         return orderDAO.getAll();
     }
 
+    public List<Order> getAllDelivered(){
+        return orderDAO.getAllDelivered();
+    }
+    public List<Order> getAllUndelivered(){
+        return orderDAO.getAllUndelivered();
+    }
+
+    public List<Order> getAllByUser(int id){
+        return orderDAO.getAllByUsername(id);
+    }
+
     public Order getOrder() {
         return order;
     }

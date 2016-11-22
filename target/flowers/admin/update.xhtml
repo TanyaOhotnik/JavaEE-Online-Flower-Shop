@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="../composition/css.xhtml"/>
+
+</h:head>
+
+<h:body>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/headerAdmin.xhtml"/>
+
+
+        <div class="container editProfile">
+            <h:form styleClass="form-horizontal">
+                <h:messages styleClass="message"/>
+                <legend class="h3">Редактирование товара</legend>
+                <p align="center">Введите артиул товара, который необходимо отредактировать.</p>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Артикул: </label>
+                    <div class="col-lg-5">
+                        <h:inputText styleClass="form-control input-md" id="findCode"
+                                     ph:placeholder="12345" value="#{updateProductManagedBean.vendorCode}"/>
+                    </div>
+                </div>
+
+                <h:commandButton styleClass="btn btn-primary text-center" value="Искать"
+                                 action="#{updateProductManagedBean.findByCode()}">
+                </h:commandButton>
+                <br/>
+
+
+            </h:form>
+
+            <h:form styleClass="form-horizontal" id="addForm"  rendered="#{updateProductManagedBean.product.vendorCode>0}">
+                <h:messages styleClass="message"/>
+                <legend class="h3">Найденный товар</legend>
+
+                <h:panelGroup layout="block" id="name" styleClass="form-group">
+
+                    <label class="col-lg-3 control-label">Название</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Иван" value="#{updateProductManagedBean.product.name}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+
+                <h:panelGroup layout="block" id="description" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Описание</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Иванов" value="#{updateProductManagedBean.product.description}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+
+                <h:panelGroup layout="block" id="available" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Наличие товара</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:selectOneMenu styleClass="form-control"
+                                         value="#{updateProductManagedBean.product.available}">
+                            <f:selectItem itemValue="true" itemLabel="Товар есть на складе"/>
+                            <f:selectItem itemValue="false" itemLabel="Товара нет на складе"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="form-group" id="vendorCode">
+                    <label class="col-lg-3 control-label">Артикул</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+
+                        <h:outputText styleClass="form-control input-md"
+                                     ph:placeholder="0123456789" value="#{updateProductManagedBean.product.vendorCode}"/>
+
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="form-group" id="price">
+                    <label class="col-lg-3 control-label">Цена</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="150" value="#{updateProductManagedBean.product.price}"/>
+
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group" id="photo">
+                    <label class="col-lg-3 control-label">Фото</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="150" value="#{updateProductManagedBean.product.img}"/>
+
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+                <h:commandButton id="goRegister" styleClass="btn btn-primary pull-right" value="Сохранить"
+                                 action="#{updateProductManagedBean.updateProduct()}"/>
+            </h:form>
+
+        </div>
+
+    </div>
+
+
+    <ui:include src="../composition/footer.xhtml"/>
+    <ui:include src="../composition/script.xhtml"/>
+    <script type="text/javascript" src="../resources/js/validateProduct.js"></script>
+
+</h:body>
+
+</html>

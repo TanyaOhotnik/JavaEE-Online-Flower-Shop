@@ -15,7 +15,7 @@
             <div class="nav col-lg-3 col-lg-offset-1 col-md-3 vertical-align">
                 <ul class="nav nav-pills">
                     <li><a href="index.xhtml">Каталог</a></li>
-                    <li><a href="contacts.xhtml">Связь</a></li>
+                    <li><a href="delivery.xhtml">Доставка</a></li>
                     <!-- <li><a href="#">Ссылка 3</a></li>
                     <li><a href="#">Ссылка 4</a></li>
                     <li><a href="#">Ссылка 5</a></li> -->
@@ -23,12 +23,17 @@
             </div>
             <!--<a href="registration.xhtml"><span class="glyphicon glyphicon-user"/>Личный кабинет</a>-->
             <span class="col-lg-3 col-md-3 col-md-offset-0 col-lg-offset-0 sign-cart vertical-align pull-right">
-                <a href="" ><span class="glyphicon glyphicon-log-out"/> Выход </a>
+                <h:form>
+                <h:commandLink action="#{loginManageBean.logout()}">
+                    <span class="glyphicon glyphicon-log-out"/>
+                    Выход
+                </h:commandLink>
+                </h:form>
                 <!--<a href="registration.xhtml"><span class="glyphicon glyphicon-user"/> Личный кабинет </a>-->
-                <a href="registration.xhtml"><span class="glyphicon glyphicon-user"/>
-                <h:outputText value="#{loginManageBean.profile.username}"></h:outputText>
+                <a title="Редактирование профиля" href="private-cabinet.xhtml" ><span class="glyphicon glyphicon-user"/>
+                <h:outputText value=" #{loginManageBean.profile.email}"/>
                 </a>
-				<a href=""><span class="glyphicon glyphicon-shopping-cart"/></a>
+				<a href="basket.xhtml"><span class="glyphicon glyphicon-shopping-cart"/></a>
 
             </span>
 

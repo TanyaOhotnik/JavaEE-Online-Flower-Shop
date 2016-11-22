@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="../composition/css.xhtml"/>
+
+</h:head>
+
+<h:body>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/headerUser.xhtml"/>
+
+
+        <div class="container editProfile">
+
+            <h:form styleClass="form-horizontal" id="registration">
+                <h:messages styleClass="message"/>
+                <legend class="h3">Управление аккаунтом</legend>
+
+                <h:panelGroup layout="block" id="name" styleClass="form-group">
+
+                    <label class="col-lg-3 control-label">Имя</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Татьяна" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Иван" value="#{updateProfileManagedBean.profile.name}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+
+                <h:panelGroup layout="block" id="surname" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Фамилия</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Охотник" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Иванов" value="#{updateProfileManagedBean.profile.surname}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+
+                <!--<h:panelGroup layout="block" id="email" styleClass="form-group">-->
+                    <!--<label class="col-lg-3 control-label">E-mail адрес</label>-->
+                    <!--<h:panelGroup layout="block" styleClass="col-lg-5">-->
+                        <!--&lt;!&ndash;<input type="email" class="form-control" placeholder="Enter e-mail"/>&ndash;&gt;-->
+                        <!--<h:inputText styleClass="form-control input-md"-->
+                                     <!--ph:placeholder="E-mail" value="#{updateProfileManagedBean.profile.email}"/>-->
+                    <!--</h:panelGroup>-->
+                    <!--<h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>-->
+                <!--</h:panelGroup>-->
+
+                <h:panelGroup layout="block" styleClass="form-group" id="phone">
+                    <label class="col-lg-3 control-label">Моб. телефон</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+
+                        <!--<input type="text" class="form-control" placeholder="Enter phone"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="0123456789" value="#{updateProfileManagedBean.profile.phone}"/>
+
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+                <h:commandButton id="goRegister" styleClass="btn btn-primary pull-right" value="Сохранить"
+
+                                 action="#{updateProfileManagedBean.update()}"/>
+            </h:form>
+
+        </div>
+
+    </div>
+
+
+    <ui:include src="../composition/footer.xhtml"/>
+    <ui:include src="../composition/script.xhtml"/>
+    <script type="text/javascript" src="../resources/js/validate.js"></script>
+    <!--<ui:include src="../composition/script.xhtml"/>-->
+
+</h:body>
+
+</html>

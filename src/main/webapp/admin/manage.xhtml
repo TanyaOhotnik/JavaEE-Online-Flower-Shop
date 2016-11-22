@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="../composition/css.xhtml"/>
+
+</h:head>
+
+<h:body>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/headerAdmin.xhtml"/>
+
+
+        <div class="container manage">
+            <h:form styleClass="form-horizontal" >
+                <legend class="h3">Выберете нужное действие:</legend>
+               <h:commandButton styleClass="btn btn-primary btn-size text-center"  action="add?faces-redirect=true" value="Добавить товар"/>
+                <br/>
+               <h:commandButton styleClass="btn btn-primary btn-size text-center"  action="remove?faces-redirect=true" value="Удалить товар"/>
+                <br/>
+               <h:commandButton styleClass="btn btn-primary btn-size text-center"  action="update?faces-redirect=true" value="Редактировать товар"/>
+                <br/>
+            </h:form>
+
+        </div>
+
+
+
+    </div>
+    <ui:include src="../composition/footer.xhtml"/>
+
+</h:body>
+
+</html>

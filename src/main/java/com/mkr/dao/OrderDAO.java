@@ -2,9 +2,11 @@ package com.mkr.dao;
 
 import com.mkr.dao.interfaces.IOrderDAO;
 import com.mkr.entities.Order;
+import com.mkr.entities.Product;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -26,4 +28,36 @@ public class OrderDAO extends AbstractDAO<Order> implements IOrderDAO<Order>{
         return Order.class;
     }
 
+    @Override
+    public List<Order> getAllDelivered() {
+            try{
+                String query = "SELECT c FROM Order c WHERE c.done = TRUE";
+                TypedQuery<Order> namedQuery = em.createQuery(query, Order.class);
+                return namedQuery.getResultList();
+            }catch (NoResultException ex){
+                return null;
+            }
+    }
+
+    @Override
+    public List<Order> getAllUndelivered() {
+        try{
+            String query = "SELECT c FROM Order c WHERE c.done = FALSE";
+            TypedQuery<Order> namedQuery = em.createQuery(query, Order.class);
+            return namedQuery.getResultList();
+        }catch (NoResultException ex){
+            return null;
+        }
+    }
+
+    @Override
+    public List<Order> getAllByUsername(int id) {
+        try{
+            String query = "SELECT c FROM Order c WHERE c.profile.id LIKE :id";
+            TypedQuery<Order> namedQuery = em.createQuery(query, Order.class).setParameter("id",id);
+            return namedQuery.getResultList();
+        }catch (NoResultException ex){
+            return null;
+        }
+    }
 }

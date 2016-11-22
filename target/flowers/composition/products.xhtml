@@ -31,11 +31,13 @@
         </h:form>
             <c:forEach items="#{getProductsManagedBean.getProducts()}" var="product">
                 <div class="col-lg-3 col-md-3 block">
-                    <h:graphicImage value="#{product.img}"/>
+                    <h:panelGroup styleClass="notAvailable" rendered="#{not product.available}">Нет на складе</h:panelGroup>
+                    <h:graphicImage value="#{product.img}" title="Aртикул: #{product.vendorCode}"/>
                     <div class="tspan">
                         <h:outputText styleClass="h4" value="#{product.name}"/>
                         <br/>
                         <h:outputText styleClass="pull-left" value="Цена: #{product.price}грн."/>
+
                     </div>
                     <h:form styleClass="order">
                         <h:commandButton styleClass="btn btn-default " value="Добавить"
@@ -43,9 +45,12 @@
                                          rendered="#{not loginManageBean.isLogged()}"
                                         />
                     <h:commandButton styleClass="btn btn-default " value="Добавить"
+                                     disabled="#{not product.available}"
                                      rendered="#{loginManageBean.isLogged()}"
                                      onclick="alert('Товар добавлен в корзину!')"
-                                     action="#{addDeleteOrderManagedBean.addOrder(product.id)}"/>
+                                     >
+                            <f:ajax listener="#{addDeleteOrderManagedBean.addOrder(product.id,loginManageBean.username)}"/>
+                            </h:commandButton>
                     </h:form>
                 </div>
 

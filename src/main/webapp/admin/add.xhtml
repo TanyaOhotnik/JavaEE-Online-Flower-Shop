@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="../composition/css.xhtml"/>
+
+</h:head>
+
+<h:body>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/headerAdmin.xhtml"/>
+
+
+        <div class="container add">
+            <h:form styleClass="form-horizontal" id="addForm">
+                <h:messages styleClass="message"/>
+                <legend class="h3">Добавление товара</legend>
+                <h:panelGroup layout="block" styleClass="form-group" id="name">
+                    <label class="col-lg-3 control-label">Название</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Татьяна" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Название цветка"
+                                     value="#{addDeleteProductManagedBean.product.name}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="form-group" id="description">
+                    <label class="col-lg-3 control-label">Краткое описание</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Description"
+                                     value="#{addDeleteProductManagedBean.product.description}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Наличие товара</label>
+                    <div class="col-lg-5">
+                        <h:selectOneMenu styleClass="form-control"
+                                         value="#{addDeleteProductManagedBean.product.available}">
+                            <f:selectItem itemValue="true" itemLabel="Товар есть на складе"/>
+                            <f:selectItem itemValue="false" itemLabel="Товара нет на складе"/>
+                        </h:selectOneMenu>
+                    </div>
+
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="form-group" id="vendorCode">
+                    <label class="col-lg-3 control-label">Артикул</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="12345" value="#{addDeleteProductManagedBean.product.vendorCode}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="form-group" id="price">
+                    <label class="col-lg-3 control-label">Цена</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Охотник" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="150" value="#{addDeleteProductManagedBean.product.price}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+
+
+                <h:panelGroup layout="block" styleClass="form-group" id="photo">
+                    <label class="col-lg-3 control-label">Фото</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="email" class="form-control" placeholder="Enter e-mail"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="name.jpeg" value="#{addDeleteProductManagedBean.product.img}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
+                <!--<h:commandButton styleClass="btn btn-primary pull-right" value="Добавить" action="manage?faces-redirect=true"/>-->
+                <h:commandButton id="addItem" styleClass="btn btn-primary text-center" value="Добавить"
+                                 action="#{addDeleteProductManagedBean.addProduct()}"/>
+
+            </h:form>
+
+        </div>
+
+
+        <!--<div class="container">-->
+            <!--<h:form styleClass="form-horizontal">-->
+                <!--<h:messages styleClass="message"/>-->
+                <!--<legend class="h3">Удаление товара</legend>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-lg-3 control-label">Артикул товара</label>-->
+                    <!--<div class="col-lg-5">-->
+                        <!--<h:inputText styleClass="form-control input-md" id="findCode"-->
+                                     <!--ph:placeholder="12345" value="#{addDeleteProductManagedBean.vendorCode}"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<h:commandButton styleClass="btn btn-primary text-center" value="Искать"-->
+                                 <!--action="#{addDeleteProductManagedBean.findByCode()}"/>-->
+                <!--<h:panelGroup rendered="#{addDeleteProductManagedBean.vendorCode>0}">-->
+                    <!--<h:outputText size="5" value="Aртикул: "/>-->
+                    <!--<h:outputText value="#{addDeleteProductManagedBean.product.vendorCode}"/><br/>-->
+                    <!--<h:outputText value="Название: "/>-->
+                    <!--<h:outputText value="#{addDeleteProductManagedBean.product.name}"/><br/>-->
+                    <!--<h:outputText value="Цена: "/>-->
+                    <!--<h:outputText value="#{addDeleteProductManagedBean.product.price}"/><br/>-->
+
+                    <!--<h:commandButton styleClass="btn btn-primary text-center" value="Удалить"-->
+                                     <!--action="#{addDeleteProductManagedBean.deleteProduct()}">-->
+                        <!--<f:ajax execute="delProduct" render="delProduct"/></h:commandButton>-->
+                <!--</h:panelGroup>-->
+            <!--</h:form>-->
+
+
+        <!--</div>-->
+
+    </div>
+    <ui:include src="../composition/footer.xhtml"/>
+    <ui:include src="../composition/script.xhtml"/>
+    <script type="text/javascript" src="../resources/js/validateProduct.js"></script>
+</h:body>
+
+</html>

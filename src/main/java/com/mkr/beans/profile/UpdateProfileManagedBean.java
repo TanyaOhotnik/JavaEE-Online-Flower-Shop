@@ -2,6 +2,7 @@ package com.mkr.beans.profile;
 
 import com.mkr.dao.interfaces.IProfileDAO;
 import com.mkr.entities.Profile;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -11,6 +12,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -25,10 +27,13 @@ public class UpdateProfileManagedBean {
     private int profileId;
     @PostConstruct
     public void init() {
-        profile = profileDAO.findByEmail("kvara@gmail.com");
+//        profile = profileDAO.findByEmail("kvara@gmail.com");
 //        profile = new Profile();
         /*find profile by user id*/
-        profileId = 1;
+//        TODO
+//                CHECK
+        profile = profileDAO.findByEmail(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().toString());
+        profileId = profile.getId();
     }
 
     public Profile getProfile() {

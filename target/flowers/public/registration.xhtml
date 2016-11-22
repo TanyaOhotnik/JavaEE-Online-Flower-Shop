@@ -20,80 +20,88 @@
         <!--<ui:include src="../composition/products.xhtml"/>-->
 
 
-
         <div class="container sign-up">
 
 
             <h:form styleClass="form-horizontal" id="login">
-            <h:messages styleClass="message"/>
-                    <legend class="h3">Войти в личный кабинет или <a id="sign-click" href="#">зарегестрироваться</a>
-                    </legend>
-                    <h:panelGroup layout="block" styleClass="form-group">
-                        <label class="col-lg-3 control-label">Email адрес</label>
-                        <h:panelGroup layout="block" styleClass="col-lg-5">
-                            <input type="email" class="form-control" placeholder="Enter email"/>
-                        </h:panelGroup>
+                <h:messages styleClass="message"/>
+                <legend class="h3">Войти в личный кабинет или <a id="sign-click" href="#">зарегестрироваться</a>
+                </legend>
+                <h:panelGroup layout="block" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Email адрес</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:inputText id="username" ph:placeholder="Enter e-mail"
+                                     styleClass="form-control"
+                                     value="#{loginManageBean.username}" size="50"/>
+
                     </h:panelGroup>
-                    <h:panelGroup layout="block" styleClass="form-group">
-                        <label class="col-lg-3 control-label">Пароль</label>
-                        <h:panelGroup layout="block" styleClass="col-lg-5">
-                            <input type="password" class="form-control" placeholder="Password"/>
-                        </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Пароль</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <h:inputSecret id="password"
+                                       ph:placeholder="Password"
+                                       styleClass="form-control"
+                                       value="#{loginManageBean.password}" size="50"/>
+
                     </h:panelGroup>
-                <button type="submit" class="btn btn-primary col-lg-3 col-lg-offset-4">Войти</button>
+                </h:panelGroup>
+                <h:commandButton styleClass="btn btn-primary col-lg-3 col-lg-offset-4"
+                                 action="#{loginManageBean.login()}" value="Войти"/>
+
             </h:form>
 
 
         </div>
 
 
-        <div class="container reg">
+        <div class="container reg" >
             <h:form styleClass="form-horizontal" id="registration">
 
-                    <legend class="h3">Регистрация</legend>
-                    <p align="center">* - поля обязательные для заполнения</p>
+                <legend class="h3">Регистрация</legend>
+                <p align="center">* - поля обязательные для заполнения</p>
                 <h:panelGroup layout="block" id="name" styleClass="form-group">
                     <label class="col-lg-3 control-label">Имя</label>
                     <h:panelGroup layout="block" styleClass="col-lg-5">
                         <!--<input type="text" placeholder="Татьяна" class="form-control input-md"/>-->
                         <h:inputText styleClass="form-control input-md"
-                                     ph:placeholder = "Иван" value="#{addGetProfileManagedBean.profile.name}"/>
-                        </h:panelGroup>
-                    <h:panelGroup class="result-validate col-lg-3 control-label" ></h:panelGroup>
+                                     ph:placeholder="Иван" value="#{addGetProfileManagedBean.profile.name}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
                 </h:panelGroup>
 
 
-                    <h:panelGroup layout="block" id="surname" styleClass="form-group">
-                        <label class="col-lg-3 control-label">Фамилия</label>
-                        <h:panelGroup layout="block" styleClass="col-lg-5">
-                            <!--<input type="text" placeholder="Охотник" class="form-control input-md"/>-->
-                            <h:inputText styleClass="form-control input-md"
-                                         ph:placeholder = "Иванов" value="#{addGetProfileManagedBean.profile.surname}"/>
-                              </h:panelGroup>
-                        <h:panelGroup class="result-validate col-lg-3 control-label" ></h:panelGroup>
+                <h:panelGroup layout="block" id="surname" styleClass="form-group">
+                    <label class="col-lg-3 control-label">Фамилия</label>
+                    <h:panelGroup layout="block" styleClass="col-lg-5">
+                        <!--<input type="text" placeholder="Охотник" class="form-control input-md"/>-->
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="Иванов" value="#{addGetProfileManagedBean.profile.surname}"/>
                     </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
+                </h:panelGroup>
 
 
                 <h:panelGroup layout="block" id="email" styleClass="form-group">
                     <label class="col-lg-3 control-label">E-mail адрес</label>
                     <h:panelGroup layout="block" styleClass="col-lg-5">
                         <!--<input type="email" class="form-control" placeholder="Enter e-mail"/>-->
-                        <h:inputText  styleClass="form-control input-md"
-                                      ph:placeholder = "E-mail" value="#{addGetProfileManagedBean.profile.email}"/>
-                        </h:panelGroup>
-                    <h:panelGroup class="result-validate col-lg-3 control-label" ></h:panelGroup>
+                        <h:inputText styleClass="form-control input-md"
+                                     ph:placeholder="E-mail" value="#{addGetProfileManagedBean.profile.email}"/>
+                    </h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
                 </h:panelGroup>
 
                 <h:panelGroup layout="block" styleClass="form-group" id="phone">
-                    <label class="col-lg-3 control-label">Мобильный телефон</label>
+                    <label class="col-lg-3 control-label">Моб. телефон</label>
                     <h:panelGroup layout="block" styleClass="col-lg-5">
 
                         <!--<input type="text" class="form-control" placeholder="Enter phone"/>-->
                         <h:inputText styleClass="form-control input-md"
-                                     ph:placeholder = "0123456789" value="#{addGetProfileManagedBean.profile.phone}"/>
+                                     ph:placeholder="0123456789" value="#{addGetProfileManagedBean.profile.phone}"/>
 
                     </h:panelGroup>
-                    <h:panelGroup class="result-validate col-lg-3 control-label" ></h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
                 </h:panelGroup>
 
                 <h:panelGroup layout="block" id="pass" styleClass="form-group">
@@ -101,29 +109,26 @@
                     <h:panelGroup layout="block" styleClass="col-lg-5">
                         <!--<input type="password" class="form-control" placeholder="Password"/>-->
                         <h:inputSecret styleClass="form-control input-md"
-                                       ph:placeholder = "Password" value="#{addGetProfileManagedBean.password}"/>
+                                       ph:placeholder="Password" value="#{addGetProfileManagedBean.password}"/>
                     </h:panelGroup>
-                    <h:panelGroup class="result-validate col-lg-3 control-label" ></h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
                 </h:panelGroup>
                 <h:panelGroup layout="block" id="confirm-pass" styleClass="form-group">
                     <label class="col-lg-3 control-label">Подтвердите пароль</label>
                     <h:panelGroup layout="block" styleClass="col-lg-5">
                         <!--<input type="password" class="form-control" placeholder="Password"/>-->
                         <h:inputSecret styleClass="form-control input-md"
-                                       ph:placeholder = "Confirm password" value="#{addGetProfileManagedBean.profile.password}"/>
+                                       ph:placeholder="Confirm password"
+                                       value="#{addGetProfileManagedBean.profile.password}"/>
 
                     </h:panelGroup>
-                    <h:panelGroup class="result-validate col-lg-3 control-label" ></h:panelGroup>
+                    <h:panelGroup class="result-validate col-lg-3 control-label"></h:panelGroup>
                 </h:panelGroup>
-               <h:commandButton id = "goRegister" styleClass="btn btn-primary pull-right" value="Зарегестироваться"
-                                action="#{addGetProfileManagedBean.addProfile()}"/>
+                <h:commandButton id="goRegister"  styleClass="btn btn-primary pull-right" value="Зарегестироваться"
+                                 action="#{addGetProfileManagedBean.addProfile()}"/>
             </h:form>
 
         </div>
-
-
-
-
 
 
     </div>

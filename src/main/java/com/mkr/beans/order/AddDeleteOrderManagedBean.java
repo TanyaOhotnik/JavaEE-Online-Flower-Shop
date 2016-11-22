@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class AddDeleteOrderManagedBean {
     private IProfileDAO<Profile> profileDAO;
     private Order order;
     private int summary;
+    private Date date = new Date();
     private List<Order> orderList;
     @PostConstruct
     public void init() {
@@ -54,20 +56,24 @@ public class AddDeleteOrderManagedBean {
         this.orderList = orderList;
     }
 
-    public void deleteOrder() {
-
+    public void deleteOrder(Order o,String username) {
+        orderList.remove(o);
+        summary-=o.getProduct().getPrice();
+        if(orderList.size()>0)
+        order = orderList.get(0);
+        else order = new Order();
     }
-
-    public void addOrder(int productId) {
+    //        TODO
+//                CHECK
+    public void addOrder(int productId, String username) {
 
 //        try{
 //           if(!validate()) throw new Exception();
 
             order.setProduct(productDAO.find(productId));
-            order.setProfile(profileDAO.find(1));
+            order.setProfile(profileDAO.findByEmail(username));
             summary+=order.getProduct().getPrice();
             orderList.add(order);
-
             order = new Order();
 //        } catch (Exception e){
 //        }
@@ -76,10 +82,15 @@ public class AddDeleteOrderManagedBean {
     public void saveChanges(){
         for(Order o: orderList){
             o.setAddress(order.getAddress());
-            o.setDate(order.getDate());
+            o.setDate(date.toString());
+//            o.setDate(order.getDate());
+            o.setAddresseeName(order.getAddresseeName());
+            o.setDone(false);
             orderDAO.update(o);
         }
+        orderList = new ArrayList<Order>();
         order = new Order();
+        summary = 0;
     }
 
 
@@ -95,5 +106,13 @@ public class AddDeleteOrderManagedBean {
 
     public void setSummary(int summary) {
         this.summary = summary;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

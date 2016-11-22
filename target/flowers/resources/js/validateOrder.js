@@ -35,6 +35,14 @@
             $("#addInfo\\:address .result-validate").html("");
         }
     });
+    $("#addInfo\\:name :input").focusout(function (e) {
+        if (e.currentTarget.value == "") {
+            $("#addInfo\\:name .result-validate").html("Заполните этот пункт!");
+        }
+        else {
+            $("#addInfo\\:name .result-validate").html("");
+        }
+    });
 
 
 

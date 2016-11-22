@@ -1,11 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
 <h:head>
-    JSF 2 Login
+    <ui:include src="../composition/css.xhtml"/>
+
 </h:head>
+
 <h:body>
-    <p>Ops! Check your user and password</p>
+
+    <div class="container wrapper">
+
+
+        <ui:include src="../composition/header.xhtml"/>
+            <div class="container add error">
+                <h3>К сожалению, логин или пароль введены не верно.</h3>
+                   <h3><a href="registration.xhtml">Попробуйте еще раз.</a></h3>
+
+            </div>
+        <ui:include src="../composition/footer.xhtml"/>
+
+
+    </div>
+    <ui:include src="../composition/script.xhtml"/>
+
 </h:body>
+
 </html>

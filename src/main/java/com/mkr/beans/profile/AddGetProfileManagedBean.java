@@ -16,6 +16,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import java.security.MessageDigest;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -69,7 +70,10 @@ public class AddGetProfileManagedBean {
 
         try{
 //            product.setImg("../resources/images/"+product.getImg());
+
+            if(profileDAO.findByEmail(profile.getEmail())!= null) throw new Exception();
             profile.setRole(roleDAO.findByRoleName("user"));
+            profile.setPassword(hashing(profile.getPassword()));
             profileDAO.update(profile);
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Поздравляем, вы зарегестрированы!"));
@@ -88,93 +92,18 @@ public class AddGetProfileManagedBean {
         return profile;
     }
 
-    public void validateEmail(FacesContext context, UIComponent comp,
-                              Object value) {
-
-        String email = (String) value;
-        if (email==null) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Поле является обязательным");
-            context.addMessage(comp.getClientId(context), message);
-            return;
-        }
-        Profile profileFromDB = profileDAO.findByEmail(email);
-        if (profileFromDB != null) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Пользователь с таким e-mail уже существует");
-            context.addMessage(comp.getClientId(context), message);
-            return;
-        }
-        if (!email.contains("@")) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Неверный формат e-mail");
-            context.addMessage(comp.getClientId(context), message);
+    public String hashing(String pass) throws Exception
+    {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(pass.getBytes());
+        byte byteData[] = md.digest();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
 
+        return sb.toString();
     }
 
-    public void validatePhone(FacesContext context, UIComponent comp,
-                                Object value) {
-        String phone = (String) value;
-        if (phone==null) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Поле является обязательным");
-            context.addMessage(comp.getClientId(context), message);
-            return;
-        }
-        boolean flag = true;
-        for (int i = 0; i < phone.length(); i++) {
-            if (!Character.isDigit(phone.charAt(i))) {
-                flag = false;
-                break;
-            }
-        }
-        if (phone.length() !=10 && flag) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Неверный формат номера");
-            context.addMessage(comp.getClientId(context), message);
 
-        }
-    }
-    public void validatePassword(FacesContext context, UIComponent comp,
-                              Object value) {
-
-        String pass = (String) value;
-
-        if (pass==null) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Поле является обязательным");
-            context.addMessage(comp.getClientId(context), message);
-            return;
-        }
-
-        if (!pass.equals(password)) {
-            ((UIInput) comp).setValid(false);
-            FacesMessage message = new FacesMessage(
-                    "Пароли не совпадают");
-            context.addMessage(comp.getClientId(context), message);
-
-        }
-    }
-    public void validateNull(FacesContext context, UIComponent comp,
-                                Object value) {
-
-        String validate = (String) value;
-
-        if (validate==null) {
-            ((UIInput) comp).setValid(false);
-
-            FacesMessage message = new FacesMessage(
-                    "Поле является обязательным");
-            context.addMessage(comp.getClientId(context), message);
-
-        }
-
-    }
 }

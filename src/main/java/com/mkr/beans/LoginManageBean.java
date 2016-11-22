@@ -44,14 +44,17 @@ public class LoginManageBean implements Serializable {
             request.login(username, password);
             profile = profileDAO.findByEmail(username);
             if (isAdmin()) {
-                result = "admin/manage?faces-redirect=true";
+                result = "/admin/orders?faces-redirect=true";
             } else {
-                result = "index?faces-redirect=true";
+
+               result = "/user/index?faces-redirect=true";
             }
 
         } catch (ServletException ex) {
 //            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-
+            username = null;
+            password= null;
+            profile = null;
             result = "loginError?faces-redirect=true";
         }
 
@@ -74,7 +77,7 @@ public class LoginManageBean implements Serializable {
 //            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
 
         } finally {
-            return "/index";
+            return "/public/index?faces-redirect=true";
         }
     }
 
@@ -96,7 +99,7 @@ public class LoginManageBean implements Serializable {
     }
 //
     public boolean isAdmin() {
-       if(profile.getRole().getName()=="admin") return true;
+       if(profile.getRole().getName().equals("admin")) return true;
         return false;
     }
 //

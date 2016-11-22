@@ -8,6 +8,9 @@
                 empty = true;
             }
         });
+        if($("#registration\\:confirm-pass :input").val()!==$("#registration\\:pass :input").val()){
+            empty = true;
+        }
 
         if (empty) {
             $('#registration\\:goRegister').attr('disabled', 'disabled');
@@ -93,7 +96,7 @@
         }
 
 
-        $("#registration\\:confirm-pass :input").focusout(function (e) {
+        $("#registration\\:confirm-pass :input").keyup(function (e) {
             var confirmPassValue = e.currentTarget.value;
             if (confirmPassValue == "") {
                 $("#registration\\:confirm-pass .result-validate").html("Пароли не совпадают!");
