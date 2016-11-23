@@ -17,6 +17,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import java.security.MessageDigest;
+import java.util.List;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -105,5 +106,8 @@ public class AddGetProfileManagedBean {
         return sb.toString();
     }
 
+    public List<Profile> getAll(){
+        return profileDAO.getAll();
+    }
 
 }

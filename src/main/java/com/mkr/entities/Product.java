@@ -131,4 +131,17 @@ public class Product implements Serializable{
         result = 31 * result + (img != null ? img.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", vendorCode=" + vendorCode +
+                ", description='" + description + '\'' +
+                ", available=" + available +
+                ", img='" + img + '\'' +
+                '}';
+    }
 }

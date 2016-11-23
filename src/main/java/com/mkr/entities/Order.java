@@ -118,4 +118,17 @@ public class Order implements Serializable {
         result = 31 * result + (done ? 1 : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", profile=" + profile +
+                ", product=" + product +
+                ", date='" + date + '\'' +
+                ", address='" + address + '\'' +
+                ", addresseeName='" + addresseeName + '\'' +
+                ", done=" + done +
+                '}';
+    }
 }

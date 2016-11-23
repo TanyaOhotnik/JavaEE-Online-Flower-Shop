@@ -63,20 +63,18 @@ public class AddDeleteOrderManagedBean {
         order = orderList.get(0);
         else order = new Order();
     }
-    //        TODO
-//                CHECK
-    public void addOrder(int productId, String username) {
 
-//        try{
-//           if(!validate()) throw new Exception();
+
+    public void addOrder(int productId, String username) {
 
             order.setProduct(productDAO.find(productId));
             order.setProfile(profileDAO.findByEmail(username));
+        System.out.println(order.getProduct().toString());
+        System.out.println(order.getProfile().getEmail());
             summary+=order.getProduct().getPrice();
             orderList.add(order);
             order = new Order();
-//        } catch (Exception e){
-//        }
+
     }
 
     public void saveChanges(){

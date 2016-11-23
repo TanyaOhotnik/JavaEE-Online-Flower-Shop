@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     JSF 2 Login
@@ -8,9 +10,13 @@
 <h:body>
 
     <h:form>
+        <h:commandButton actionListener="#{publisher.sent()}" action="pub?faces-redirect=true" value="Отправить" >
 
-        <h:commandButton action="#{publisher.sent()}" value="Отправить" />
+            <f:ajax execute="@all"/>
+        </h:commandButton>
+        <h:outputText value="#{b.getOrdersString()}" />
     </h:form>
+
 
 
 </h:body>
