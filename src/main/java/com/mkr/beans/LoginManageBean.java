@@ -41,6 +41,7 @@ public class LoginManageBean implements Serializable {
         String result;
 
         try {
+
             request.login(username, password);
             profile = profileDAO.findByEmail(username);
             if (isAdmin()) {

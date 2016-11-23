@@ -2,8 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="WebApp_ID" version="2.5">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
@@ -60,8 +60,14 @@
     </auth-constraint>
   </security-constraint>
 
-  <!--<error-page>-->
-    <!--<location>/index.xhtml</location>-->
-  <!--</error-page>-->
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/public/errorRole.xhtml</location>
+  </error-page>
+  <error-page>
+    <location>/public/error.xhtml</location>
+  </error-page>
+
 
 </web-app>

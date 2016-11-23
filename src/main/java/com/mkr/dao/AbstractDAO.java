@@ -17,7 +17,6 @@ public abstract class AbstractDAO<T> implements InterfaceDAO<T> {
     protected EntityManager em;
 
     @Override
-//    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void add(T obj) {
         em.persist(obj);
     }
@@ -28,7 +27,6 @@ public abstract class AbstractDAO<T> implements InterfaceDAO<T> {
     }
 
     @Override
-//    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void delete(T obj) {
         em.remove(em.merge(obj));
     }
@@ -39,7 +37,6 @@ public abstract class AbstractDAO<T> implements InterfaceDAO<T> {
     }
 
     @Override
-//    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public T find(int id) {
         return em.find(getEntityClass(), id);
     }
