@@ -1,5 +1,6 @@
 package com.mkr.beans.product;
 
+import com.mkr.beans.LoginManageBean;
 import com.mkr.dao.interfaces.IProductDAO;
 import com.mkr.entities.Product;
 import org.primefaces.model.UploadedFile;
@@ -11,6 +12,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -70,10 +73,12 @@ public class AddDeleteProductManagedBean {
            }
             product.setImg("../resources/images/"+product.getImg());
             productDAO.add(product);
+            Logger.getLogger(AddDeleteProductManagedBean.class.getName()).log(Level.SEVERE, "add item successful");
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Товар добавлен в базу!"));
             product = new Product();
         } catch (Exception e){
+            Logger.getLogger(AddDeleteProductManagedBean.class.getName()).log(Level.SEVERE, "add item failed");
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Произошла ошибка, товар не добавлен в базу!"));
         }

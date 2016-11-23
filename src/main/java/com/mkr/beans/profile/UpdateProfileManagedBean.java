@@ -14,6 +14,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -57,9 +59,13 @@ public class UpdateProfileManagedBean {
         profileDAO.update(profile);
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Ваши данные успешно сохранены."));
+            Logger.getLogger(UpdateProfileManagedBean.class.getName()).log(Level.INFO, "profile update successful");
+
         }catch (Exception e){
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Произошла ошибка, ваши данные не будут сохранены."));
+            Logger.getLogger(UpdateProfileManagedBean.class.getName()).log(Level.SEVERE, "profile update failed");
+
         }
     }
     

@@ -1,5 +1,6 @@
 package com.mkr.beans.profile;
 
+import com.mkr.beans.product.UpdateProductManagedBean;
 import com.mkr.dao.RoleDAO;
 import com.mkr.dao.interfaces.IProfileDAO;
 import com.mkr.dao.interfaces.IRoleDAO;
@@ -18,6 +19,8 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import java.security.MessageDigest;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -79,9 +82,13 @@ public class AddGetProfileManagedBean {
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Поздравляем, вы зарегестрированы!"));
             profile = new Profile();
+            Logger.getLogger(AddGetProfileManagedBean.class.getName()).log(Level.INFO, "register successful");
+
         } catch (Exception e){
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Произошла ошибка, существует аккаунт с указанным e-mail!"));
+            Logger.getLogger(AddGetProfileManagedBean.class.getName()).log(Level.SEVERE, "register failed.Email has use");
+
         }
 
     }

@@ -11,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -66,6 +68,7 @@ public class UpdateProductManagedBean {
         if(this.vendorCode >0){
             product =  productDAO.findByVendorCode(this.vendorCode);
             if(product==null) {
+                Logger.getLogger(UpdateProductManagedBean.class.getName()).log(Level.WARNING, "no item found");
                 FacesContext.getCurrentInstance().addMessage("test1",
                         new FacesMessage("Товар не найден, проверьте артикул."));
             }
@@ -79,9 +82,13 @@ public class UpdateProductManagedBean {
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Данные товара обновлены!"));
             product = new Product();
+            Logger.getLogger(UpdateProductManagedBean.class.getName()).log(Level.INFO, "update successful");
+
         } catch (Exception e){
             FacesContext.getCurrentInstance().addMessage("test",
                     new FacesMessage("Произошла ошибка, данные товара не будут обновлены!"));
+            Logger.getLogger(UpdateProductManagedBean.class.getName()).log(Level.SEVERE, "update failed");
+
         }
     }
 }

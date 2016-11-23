@@ -44,14 +44,15 @@ public class LoginManageBean implements Serializable {
             request.login(username, password);
             profile = profileDAO.findByEmail(username);
             if (isAdmin()) {
+                Logger.getLogger(LoginManageBean.class.getName()).log(Level.INFO, "login in admin page successful");
                 result = "/admin/orders?faces-redirect=true";
             } else {
-
-               result = "/user/index?faces-redirect=true";
+                Logger.getLogger(LoginManageBean.class.getName()).log(Level.INFO, "login in user page successful");
+                result = "/user/index?faces-redirect=true";
             }
 
         } catch (ServletException ex) {
-//            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginManageBean.class.getName()).log(Level.INFO, "login failed, access denied");
             username = null;
             password= null;
             profile = null;
@@ -73,17 +74,13 @@ public class LoginManageBean implements Serializable {
 
 
         } catch (ServletException ex) {
-
-//            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginManageBean.class.getName()).log(Level.SEVERE, "logout failed");
 
         } finally {
             return "/public/index?faces-redirect=true";
         }
     }
 
-//    public CustomerEJB getEjbFacade() {
-//        return ejbFacade;
-//    }
 
     public  Profile getAuthenticatedUser() {
         return profile;
@@ -102,14 +99,7 @@ public class LoginManageBean implements Serializable {
        if(profile.getRole().getName().equals("admin")) return true;
         return false;
     }
-//
-//    public String goAdmin() {
-//        if (isAdmin()) {
-//            return "/admin/index";
-//        } else {
-//            return "index";
-//        }
-//    }
+
 
     public String getUsername() {
         return username;

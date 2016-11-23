@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Tanya Ohotnik on 10.11.2016.
@@ -51,10 +53,12 @@ public class DeleteProductManagedBean {
             productDAO.delete(findByCode());
             vendorCode = 0;
             product = new Product();
+            Logger.getLogger(AddDeleteProductManagedBean.class.getName()).log(Level.INFO, "delete item successful");
             FacesContext.getCurrentInstance().addMessage("test1",
                     new FacesMessage("Товар удален из базы!"));
 
         } catch (Exception e){
+            Logger.getLogger(DeleteProductManagedBean.class.getName()).log(Level.SEVERE, "delete item failed");
 
             FacesContext.getCurrentInstance().addMessage("test1",
                     new FacesMessage( "Произошла ошибка, товар не будет удален из базы!"));
